@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ssh_load_k8s_env"
-categories: k8s
+categories: [k8s]
 tags: [k8s, ssh, 优化]
 ---
 
