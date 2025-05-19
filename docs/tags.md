@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 标签
+permalink: /tags.html
 ---
 
 <h1>🏷️ 标签</h1>

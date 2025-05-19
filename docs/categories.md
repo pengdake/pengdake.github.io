@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 分类
+permalink: /categories.html
 ---
 
 <h1>📂 分类</h1>
