@@ -45,7 +45,6 @@ jekyll-archives:
 
 permalink: /:year/:month/:day/:title/
 
-markdown: kramdown
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -60,3 +59,6 @@ markdown: kramdown
 #   - vendor/ruby/
 
 lang: zh-CN
+navigation:
+  enabled: true
+  data: navigation
