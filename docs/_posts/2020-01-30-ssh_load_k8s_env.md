@@ -1,8 +1,10 @@
 ---
-layout: post
+layout: single
+toc: true
+toc_sticky: true
 title:  "ssh_load_k8s_env"
 categories: [k8s]
-tags: [k8s, ssh, 优化]
+tags: [k8s, ssh]
 ---
 
 

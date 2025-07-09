@@ -1,6 +1,7 @@
 ---
-layout: post
-title:  "linux_fstab_set"
+layout: single
+toc: true
+toc_sticky: true
 categories: [linux]
 tags: [linux, fstab]
 ---

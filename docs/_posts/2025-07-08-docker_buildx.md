@@ -1,6 +1,7 @@
 ---
-layout: post
-title:  "docker_buildx_info"
+layout: single
+toc: true
+toc_sticky: true
 categories: [docker]
 tags: [docker, image, docker_swarm]
 ---
