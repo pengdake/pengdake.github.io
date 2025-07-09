@@ -26,9 +26,10 @@ github_username:  pengdake
 
 # Build settings
 markdown: kramdown
-theme: minima
+remote_theme: "mmistakes/minimal-mistakes@4.27.1"
 plugins:
   - jekyll-archives
+  - jekyll-include-cache
 
 collections: []
 
