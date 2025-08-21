@@ -95,14 +95,14 @@ vrrp_instance VI_1 {
 * 原 Master 恢复，系统发现双方 UUID 不一致 → Split-Brain
 #### 现象
 当主节点关机后，vip切换到备节点，同时备节点的keepalived执行notify_master脚本，将drbd角色切换成主，挂载备节点存储，启动nfs服务，实现nfs的高可用。这时备节点drbd的状态为standalone
-```
-#/etc/keepalived/notify_master.sh
+``` 
+# /etc/keepalived/notify_master.sh
 
 drbdadm up nfs
 drbdadm primary --force nfs
 mount /dev/drbd0 /nfs
 systemctl start nfs-server
-```
+``` 
 ```
 # /proc/drbd
 version: 8.4.11 (api:1/proto:86-101)
@@ -111,6 +111,7 @@ srcversion: 2CC17D07553A98E96473D42
     ns:0 nr:0 dw:72 dr:2677 al:4 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:24576
 
 ```
+
 当原主节点启动后，由于主节点存储数据不是最新的，如果错误的强制设置当前节点为drbd的主节点，则可能会导致脑裂，脑裂会导致两台节点无法建立连接，两节点一般都为standalone状态
 ```
 # dmesg --ctime -w | grep drbd 日志中出现Split-Brain detected but unresolved, dropping connection!
@@ -122,6 +123,7 @@ srcversion: 2CC17D07553A98E96473D42
 [三 8月 13 20:34:47 2025] drbd nfs/0 drbd0: helper command: /sbin/drbdadm split-brain minor-0 
 [三 8月 13 20:34:47 2025] drbd nfs/0 drbd0: helper command: /sbin/drbdadm split-brain minor-0 exit code 0 (0x0)
 ```
+
 #### 恢复步骤
 当出现脑裂时，需要按以下步骤恢复
 ```
@@ -133,6 +135,7 @@ drbdadm primary --force nfs
 drbdadm secondary nfs
 drbdadm down nfs
 drbdadm up nfs
+drbdadm disconnect nfs
 drbdadm -- --discard-my-data connect nfs
 
 # Step 3: 保留数据节点连接对方
