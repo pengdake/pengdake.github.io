@@ -89,7 +89,9 @@ ExternalDNS 是一个 Kubernetes 控制器（Controller），可以把集群内�
 helm install external-dns bitnami/external-dns    --set provider=rfc2136   --set rfc2136.host=192.168.31.100   --set rfc2136.port=53   --set rfc2136.zone=pengdake.xyz   --set rfc2136.tsigSecret=QLErbZUtNtEsCk5a4ExIyP6uM1WgVqXc1FxRyCDGaS4=  --set rfc2136.tsigKeyname=externaldns   --set rfc2136.tsigAlgorithm=hmac-sha256   --set policy=upsert-only --set txtOwnerId=k3s
 ```
 部署完成后，我们就可以在ingress规则声明中添加external-dns.alpha.kubernetes.io/target信息，实现ingress规则变更时，自动维护本地dns的记录
-```yaml
+
+更新后的ingress示例
+```
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -152,5 +154,4 @@ spec:
                 name: jellyfin   # 你上面 ClusterIP Service 的名字
                 port:
                   number: 8096
-
 ```
