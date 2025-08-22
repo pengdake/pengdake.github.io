@@ -15,7 +15,6 @@ k3s service资源类型主要分为以下三种
 * loadbalance: 对外暴露一个统一的 IP，自动把请求分发到后端 Service，内部环境需要安装MetalLB等插件
 其中clusterip不能直接通过外部访问，需要借助ingerss才能实现，ingress的功能主要类似反向代理，定义ingress规则，通过统一暴露的端口，将流量转发给内部服务监听的端口。
 ```yaml
-# ingress示例
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
