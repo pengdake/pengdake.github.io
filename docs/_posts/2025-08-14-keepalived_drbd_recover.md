@@ -95,9 +95,8 @@ vrrp_instance VI_1 {
 * 原 Master 恢复，系统发现双方 UUID 不一致 → Split-Brain
 #### 现象
 当主节点关机后，vip切换到备节点，同时备节点的keepalived执行notify_master脚本，将drbd角色切换成主，挂载备节点存储，启动nfs服务，实现nfs的高可用。这时备节点drbd的状态为standalone
+切换drbd主节点脚本/etc/keepalived/notify_master.sh示例
 ```
-# 切换drbd主节点脚本/etc/keepalived/notify_master.sh
-
 drbdadm up nfs
 drbdadm primary --force nfs
 mount /dev/drbd0 /nfs
