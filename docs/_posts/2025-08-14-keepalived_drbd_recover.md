@@ -101,14 +101,13 @@ drbdadm up nfs
 drbdadm primary --force nfs
 mount /dev/drbd0 /nfs
 systemctl start nfs-server
-``` 
+```
 ```
 # /proc/drbd
 version: 8.4.11 (api:1/proto:86-101)
 srcversion: 2CC17D07553A98E96473D42
   0: cs:WFConnection ro:Primary/Unknown ds:UpToDate/DUnknown C r-----
     ns:0 nr:0 dw:72 dr:2677 al:4 bm:0 lo:0 pe:0 ua:0 ap:0 ep:1 wo:f oos:24576
-
 ```
 
 当原主节点启动后，由于主节点存储数据不是最新的，如果错误的强制设置当前节点为drbd的主节点，则可能会导致脑裂，脑裂会导致两台节点无法建立连接，两节点一般都为standalone状态
